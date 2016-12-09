@@ -100,10 +100,15 @@
                     , filter: function (feature) {
 
 
-                        if (feature.properties.Area == 'Community Outreach' & feature.properties.Year == '2017') {
+                        if (feature.properties.Area == 'Community Outreach') {
                             return feature;
                         }
 
+/*                         if (feature.properties.Area == 'Community Outreach' & feature.properties.Year == '2017') {
+                            return feature;
+                        }
+                        */
+                        
                       /*  if (feature.properties.Year == '2016') {
                             return feature;
                         }
@@ -120,15 +125,15 @@
 
 
 
-                function updateSymbols(education) {
+                function updateSymbols(education, currentYear) {
 
                     // some kind of variabe here??
                     var year;
 
                     education.eachLayer(function (layer) {
                         year = layer.feature.properties["Year"];
-                        layer.update(year);
-                //        console.log(year);
+                        layer.update(currentYear)
+                        console.log(year);
 
 
                     });
@@ -142,7 +147,7 @@
                             var currentYear = $(this).val();
                     //        console.log($(this).val());
                            updateSymbols(education, currentYear);
-                            $('#grade span').html(currentYear);
+                       //     $('#grade span').html(currentYear);
 
                         });
                 }
